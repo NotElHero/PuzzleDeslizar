@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.Random;
+
 public class Puzzle extends Activity implements View.OnClickListener {
 
     Button boton1, boton2, boton3, boton4, boton5, boton6, boton7, boton8, boton9;
@@ -33,15 +35,21 @@ public class Puzzle extends Activity implements View.OnClickListener {
         boton8.setOnClickListener(this);
         boton9.setOnClickListener(this);
 
-        int [] combinacion = new int[8];
-
-        for (int i = 0; i<9; i++){
-            //combinacion [i];
-        }
+        crea_aleatoriamente();
     }
 
     @Override
     public void onClick(View v) {
 
+    }
+
+    public void crea_aleatoriamente(){
+        int [] combinacion = new int [9];
+        Random random = new Random();
+
+        for (int i = 0; i<9; i++){
+            combinacion [i] = random.nextInt(8);
+            System.out.println(combinacion [i]);
+        }
     }
 }

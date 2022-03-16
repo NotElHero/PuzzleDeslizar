@@ -7,12 +7,43 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/botonEmpezar"
+        android:id="@+id/boton3x3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:text="Empezar"
+        android:text="3x3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/boton4x4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="4x4"
+        app:layout_constraintEnd_toEndOf="@+id/boton3x3"
+        app:layout_constraintStart_toStartOf="@+id/boton3x3"
+        app:layout_constraintTop_toBottomOf="@+id/boton3x3" />
+
+    <Button
+        android:id="@+id/botonOpciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Opciones"
+        app:layout_constraintEnd_toEndOf="@+id/boton4x4"
+        app:layout_constraintStart_toStartOf="@+id/boton4x4"
+        app:layout_constraintTop_toBottomOf="@+id/boton4x4" />
+
+    <Button
+        android:id="@+id/botonRank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Ranking"
+        app:layout_constraintEnd_toEndOf="@+id/botonOpciones"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="@+id/botonOpciones"
+        app:layout_constraintTop_toBottomOf="@+id/botonOpciones" />
 </androidx.constraintlayout.widget.ConstraintLayout>

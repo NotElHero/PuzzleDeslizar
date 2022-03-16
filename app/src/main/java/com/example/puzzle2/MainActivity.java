@@ -9,20 +9,34 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button empezar;
+    Button x3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        empezar = (Button) findViewById(R.id.botonEmpezar);
-        empezar.setOnClickListener(this);
+        x3 = (Button) findViewById(R.id.boton3x3);
+        x3.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        Intent cargarPuzzle = new Intent(this, Puzzle.class);
-        startActivity(cargarPuzzle);
+        switch (v.getId()){
+            case R.id.boton3x3:
+                Intent cargarPuzzle = new Intent(this, Puzzle.class);
+                startActivity(cargarPuzzle);
+                break;
+            case R.id.boton4x4:
+
+                break;
+            case R.id.botonOpciones:
+
+                break;
+            case R.id.botonRank:
+
+                break;
+        }
+
     }
 }
