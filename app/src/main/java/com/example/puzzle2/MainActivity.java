@@ -10,6 +10,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button x3;
+    Boolean puzz3x3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +25,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.boton3x3:
+                puzz3x3 = true;
                 Intent cargarPuzzle = new Intent(this, Puzzle.class);
                 startActivity(cargarPuzzle);
                 break;
             case R.id.boton4x4:
-
+                puzz3x3 = false;
                 break;
             case R.id.botonOpciones:
 
