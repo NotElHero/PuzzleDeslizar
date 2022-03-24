@@ -6,11 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+import android.os.SystemClock;
+import android.widget.Chronometer;
 
 import androidx.core.app.NotificationCompat;
 
-import java.sql.SQLOutput;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -20,6 +20,7 @@ public class Puzzle extends Activity implements View.OnClickListener {
 
     Button boton1, boton2, boton3, boton4, boton5, boton6, boton7, boton8, boton9, botonPrueba;
     Boolean b1, b2, b3, b4, b5, b6, b7, b8, b9;
+    Chronometer tiempo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,11 @@ public class Puzzle extends Activity implements View.OnClickListener {
 
         botonPrueba = (Button) findViewById(R.id.prueba);
         botonPrueba.setOnClickListener(this);
+
+        tiempo = (Chronometer) findViewById(R.id.tiempo);
+        tiempo.setBase(SystemClock.elapsedRealtime());
+        tiempo.setFormat("%s");
+        tiempo.start();
 
         crea_aleatoriamente();
     }
@@ -133,6 +139,7 @@ public class Puzzle extends Activity implements View.OnClickListener {
             toast.show();*/
 
             //NotificationCompat.Builder notificacion = new NotificationCompat.Builder(this, )
+            tiempo.stop();
         }
 
     }
@@ -157,8 +164,6 @@ public class Puzzle extends Activity implements View.OnClickListener {
 
         //Comprueba si es posible
         Boolean esPosible;
-
-
 
     }
 
