@@ -10,6 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Puzzle2">
         <activity android:name=".Puzzle"/>
+        <activity android:name=".Ranking"/>
+        <activity android:name=".Puzzle4x4"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

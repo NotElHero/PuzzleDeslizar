@@ -9,8 +9,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button x3;
-    Boolean puzz3x3;
+    Button x3, rank, x4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,24 +18,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         x3 = (Button) findViewById(R.id.boton3x3);
         x3.setOnClickListener(this);
+        x4 = (Button) findViewById(R.id.boton4x4);
+        x4.setOnClickListener(this);
+        rank = (Button) findViewById(R.id.botonRank);
+        rank.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.boton3x3:
-                puzz3x3 = true;
                 Intent cargarPuzzle = new Intent(this, Puzzle.class);
                 startActivity(cargarPuzzle);
                 break;
             case R.id.boton4x4:
-                puzz3x3 = false;
+                Intent cargarPuzzle4x4 = new Intent(this, Puzzle4x4.class);
+                startActivity(cargarPuzzle4x4);
                 break;
             case R.id.botonOpciones:
 
                 break;
             case R.id.botonRank:
-
+                Intent cargarRanking = new Intent(this, Ranking.class);
+                startActivity(cargarRanking);
                 break;
         }
 

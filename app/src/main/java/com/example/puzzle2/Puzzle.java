@@ -1,6 +1,10 @@
 package com.example.puzzle2;
 
+import static java.sql.Types.NULL;
+
 import android.app.Activity;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +25,8 @@ public class Puzzle extends Activity implements View.OnClickListener {
     Button boton1, boton2, boton3, boton4, boton5, boton6, boton7, boton8, boton9, botonPrueba;
     Boolean b1, b2, b3, b4, b5, b6, b7, b8, b9;
     Chronometer tiempo;
+    long tiempoFin;
+    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +59,9 @@ public class Puzzle extends Activity implements View.OnClickListener {
         tiempo.setBase(SystemClock.elapsedRealtime());
         tiempo.setFormat("%s");
         tiempo.start();
+
+        db = openOrCreateDatabase("ranking", Context.MODE_PRIVATE, null);
+        db.execSQL("CREATE TABLE IF NOT EXISTS ranking(Rango INTEGER PRIMARY KEY AUTOINCREMENT,Tiempo INTEGER);");
 
         crea_aleatoriamente();
     }
@@ -135,17 +144,17 @@ public class Puzzle extends Activity implements View.OnClickListener {
         }
 
         if (b1 && b2 && b3 && b4 && b5 && b6 && b7 && b8 && b9 == true){
-            /*Toast toast = Toast.makeText(this, "Has ganado", Toast.LENGTH_SHORT);
-            toast.show();*/
+            Toast toast = Toast.makeText(this, "Has ganado", Toast.LENGTH_SHORT);
+            toast.show();
 
             //NotificationCompat.Builder notificacion = new NotificationCompat.Builder(this, )
             tiempo.stop();
+            tiempoFin = (int) (SystemClock.elapsedRealtime() - tiempo.getBase());
+            agregar();
         }
-
     }
 
     public void crea_aleatoriamente(){
-
         //Crea una de las posibles combinaciones
         String [] c3x3 = {"0", "1", "2", "3", "4", "5", "6", "7", "8"};
         List<String> C3x3 = Arrays.asList(c3x3);
@@ -161,10 +170,6 @@ public class Puzzle extends Activity implements View.OnClickListener {
         boton7.setText(C3x3.get(6));
         boton8.setText(C3x3.get(7));
         boton9.setText(C3x3.get(8));
-
-        //Comprueba si es posible
-        Boolean esPosible;
-
     }
 
     public void ejecuta_movimiento(View v){
@@ -288,7 +293,12 @@ public class Puzzle extends Activity implements View.OnClickListener {
                 boton8.setText("0");
                 boton9.setText("8");
                 break;
-
         }
+    }
+
+    public void agregar(){
+        db.execSQL("INSERT INTO ranking VALUES (NULL,'"+tiempoFin+"')");
+        System.out.println("Rank añadido");
+        db.close();
     }
 }
