@@ -28,15 +28,15 @@ public class Ranking extends Activity {
 
     public void listar(){
         ArrayAdapter<String> adaptador;
-        List<String> lista = new ArrayList<String>();
-        Cursor c=db.rawQuery("SELECT * FROM ranking", null);
-        if(c.getCount()==0)
+        List<String> lista = new ArrayList<>();
+        Cursor c = db.rawQuery("SELECT * FROM ranking", null);
+        if(c.getCount() == 0)
             lista.add("No hay registros");
         else{
             while(c.moveToNext())
                 lista.add(c.getString(0)+"-"+c.getString(1));
         }
-        adaptador=new ArrayAdapter<String>(getApplicationContext(),R.layout.activity_ranking,lista);
+        adaptador = new ArrayAdapter<>(getApplicationContext(),R.layout.activity_ranking,lista);
         listaRank.setAdapter(adaptador);
     }
 }
